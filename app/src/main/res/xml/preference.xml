@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="设置">
+    <PreferenceCategory
+        android:title="基本设置">
+
+        <Preference
+            android:key="account"
+            android:title="帐号管理"
+            android:summary="帐号设置及密码修改"
+            android:layout="@layout/preference_item"/>
+
+        <Preference
+            android:title="加密密码"
+            android:summary="对日记内容进行加密"
+            android:layout="@layout/preference_item"/>
+
+        <Preference
+            android:title="清除缓存"
+            android:layout="@layout/preference_item"/>
+
+        <CheckBoxPreference
+            android:title="联网设置"
+            android:key="network"
+            android:summaryOn="联网模式"
+            android:summaryOff="单机模式(默认)"
+            android:defaultValue="false"
+            android:layout="@layout/preference_item"/>
+    </PreferenceCategory>
+</PreferenceScreen>

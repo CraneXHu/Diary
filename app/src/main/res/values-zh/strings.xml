@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">日记本</string>
+    <string name="title">日记</string>
+    <string name="add">新建</string>
+    <string name="back">返回</string>
+    <string name="search">搜索</string>
+    <string name="list">列表</string>
+    <string name="calendar">日历</string>
+    <string name="setting">设置</string>
+    <string name="help">帮助</string>
+    <string name="feedback">意见反馈</string>
+    <string name="opensource_license">开源许可</string>
+    <string name="about">关于</string>
+    <string name="exit">退出</string>
+    <string name="account_setting">帐号管理</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="user">手机号</string>
+    <string name="password">密码</string>
+    <string name="forget_password">忘记密码</string>
+    <string name="reset_password">重置密码</string>
+    <string name="verification">验证</string>
+    <string name="confirm_password">确认密码</string>
+
+    <string name="activity_edit_hint">内容</string>
+    <string name="activity_feedback_menu_send">提交</string>
+    <string name="nickname">昵称</string>
+    <string name="about_content">这是我在业余时间学习android所写的一个作品，\n还有很多不足之处，以后会慢慢完善。</string>
+    <string name="email">联系: hhxnbw@163.com。\n</string>
+    <string name="blog">博客: http://pkhope.github.io</string>
+</resources>
