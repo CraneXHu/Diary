@@ -26,4 +26,4 @@
         android:gravity="center"
         android:numColumns="7" />
 
-</LinearLayout><!-- From: file:/E:/AndroidWorkspace/Diary/BonetCalendarView/res/layout/calendar_month_layout.xml -->
+</LinearLayout>

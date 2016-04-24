@@ -1,1 +1,1 @@
-include ':app', ':BonetCalendarView', ':volley'
+include ':app', ':BonetCalendarView'

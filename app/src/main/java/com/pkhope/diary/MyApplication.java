@@ -2,8 +2,10 @@ package com.pkhope.diary;
 
 import android.app.Application;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.Volley;
+import com.avos.avoscloud.AVOSCloud;
+import com.avos.avoscloud.AVObject;
+import com.pkhope.diary.model.Document;
+import com.pkhope.diary.model.User;
 
 import java.io.IOException;
 
@@ -13,7 +15,6 @@ import java.io.IOException;
 public class MyApplication extends Application{
 
     private static Document mDocument;
-    private static RequestQueue mRequestQueue;
     public static final  int MOD_EDIT = 0;
     public static final  int MOD_VIEW = 1;
     private static int mCurMod = MOD_EDIT;
@@ -22,7 +23,8 @@ public class MyApplication extends Application{
     public void onCreate() {
         super.onCreate();
 
-        mRequestQueue = Volley.newRequestQueue(getApplicationContext());
+        AVObject.registerSubclass(User.class);
+        AVOSCloud.initialize(this, "d8sfcRI2r8wsnakEnSyljGm2-gzGzoHsz", "SmTS3sgmLq9hwlaKEUOWPxCg");
 
         initDoc();
     }
@@ -34,10 +36,6 @@ public class MyApplication extends Application{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-    }
-
-    public static RequestQueue getRequestQueue(){
-        return mRequestQueue;
     }
 
     public static Document getDoc(){

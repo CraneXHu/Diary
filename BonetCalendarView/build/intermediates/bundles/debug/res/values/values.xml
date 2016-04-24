@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/E:/AndroidWorkspace/Diary/BonetCalendarView/res/values/colors.xml -->
-    <eat-comment/>
     <color name="background_color">#EEEEEE</color>
     <color name="black">#000000</color>
     <color name="blue">#3030FF</color>
@@ -11,18 +9,12 @@
     <color name="grey">#ccc</color>
     <color name="light_green">#1ACB76</color>
     <color name="white">#FFFFFF</color>
-    <!-- From: file:/E:/AndroidWorkspace/Diary/BonetCalendarView/res/values/dimens.xml -->
-    <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="button_size">32sp</dimen>
-    <!-- From: file:/E:/AndroidWorkspace/Diary/BonetCalendarView/res/values/strings.xml -->
-    <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="app_name">BonetCalendarView</string>
     <string name="hello_world">Hello world!</string>
-    <!-- From: file:/E:/AndroidWorkspace/Diary/BonetCalendarView/res/values/styles.xml -->
-    <eat-comment/>
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in

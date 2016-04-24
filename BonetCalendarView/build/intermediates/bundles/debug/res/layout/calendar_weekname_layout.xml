@@ -9,4 +9,3 @@
    	android:id="@+id/textview_text"
    	android:clickable="false">
 </TextView>
-<!-- From: file:/E:/AndroidWorkspace/Diary/BonetCalendarView/res/layout/calendar_weekname_layout.xml -->
