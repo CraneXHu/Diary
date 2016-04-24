@@ -15,7 +15,10 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
+import com.pkhope.diary.MyApplication;
 import com.pkhope.diary.R;
+import com.pkhope.diary.callable.OnLogInCallback;
+import com.pkhope.diary.model.Document;
 import com.pkhope.diary.model.User;
 
 import java.util.List;
@@ -51,19 +54,37 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
-                AVQuery<User> query = AVObject.getQuery(User.class);
-                query.whereEqualTo("userName",mUser);
-                query.findInBackground(new FindCallback<User>() {
+//                AVQuery<User> query = AVObject.getQuery(User.class);
+//                query.whereEqualTo("userName",mUser);
+//                query.findInBackground(new FindCallback<User>() {
+//                    @Override
+//                    public void done(List<User> list, AVException e) {
+//                        if(list.size() == 0){
+//
+//                            Toast.makeText(getApplicationContext(),"用户不存在",Toast.LENGTH_SHORT).show();
+//
+//                        } else {
+//                            Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+//                            startActivity(intent);
+//                            finish();
+//                        }
+//                    }
+//                });
+
+                User.logInInBackground(mUser, mPwd, new OnLogInCallback() {
                     @Override
-                    public void done(List<User> list, AVException e) {
-                        if(list.size() == 0){
+                    public void done(User user, AVException e) {
+                        if(e == null){
 
-                            Toast.makeText(getApplicationContext(),"用户不存在",Toast.LENGTH_SHORT).show();
+                            Document doc = ((MyApplication)getApplication()).getDoc();
+                            doc.deleteFile();
+                            doc.load();
 
-                        } else {
                             Intent intent = new Intent(LoginActivity.this,MainActivity.class);
                             startActivity(intent);
                             finish();
+                        }else{
+                            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

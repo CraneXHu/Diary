@@ -61,21 +61,6 @@ public class SettingActivity extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.preference);
 
-//            mNet = (CheckBoxPreference)findPreference("network");
-//            mNet.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-//                @Override
-//                public boolean onPreferenceClick(Preference preference) {
-//                    SharedPreferences.Editor editor = mSharePreference.edit();
-//                    if (mNet.isChecked()){
-//                        editor.putBoolean("net",true);
-//                    }
-//                    else{
-//                        editor.putBoolean("net",false);
-//                    }
-//                    return true;
-//                }
-//            });
-
             mAccount = findPreference("account");
             mAccount.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
@@ -85,11 +70,6 @@ public class SettingActivity extends AppCompatActivity {
                     return true;
                 }
             });
-
-            init();
-        }
-
-        protected void init() {
 
         }
     }

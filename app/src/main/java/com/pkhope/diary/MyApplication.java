@@ -1,9 +1,11 @@
 package com.pkhope.diary;
 
 import android.app.Application;
+import android.content.SharedPreferences;
 
 import com.avos.avoscloud.AVOSCloud;
 import com.avos.avoscloud.AVObject;
+import com.pkhope.diary.model.DiaryLc;
 import com.pkhope.diary.model.Document;
 import com.pkhope.diary.model.User;
 
@@ -24,6 +26,7 @@ public class MyApplication extends Application{
         super.onCreate();
 
         AVObject.registerSubclass(User.class);
+        AVObject.registerSubclass(DiaryLc.class);
         AVOSCloud.initialize(this, "d8sfcRI2r8wsnakEnSyljGm2-gzGzoHsz", "SmTS3sgmLq9hwlaKEUOWPxCg");
 
         initDoc();

@@ -33,6 +33,7 @@ import com.bonet.views.BtCalendarView;
 import com.bonet.views.OnDateSelectedListener;
 import com.pkhope.diary.model.Diary;
 import com.pkhope.diary.adapter.DiaryAdapter;
+import com.pkhope.diary.model.DiaryLc;
 import com.pkhope.diary.model.Document;
 import com.pkhope.diary.MyApplication;
 import com.pkhope.diary.adapter.MyPagerAdapter;
@@ -220,6 +221,13 @@ public class MainActivity extends AppCompatActivity {
 //				mDiaryAdapter.notifyDataSetChanged();
 				mRVAdapter.setList(MyApplication.getDoc().getDiaryManager().getList());
 				mRVAdapter.notifyDataSetChanged();
+
+				DiaryLc dl = new DiaryLc();
+				dl.setDate(diary.getDate());
+				dl.setWeek(diary.getWeek());
+				dl.setContent(diary.getContent());
+				dl.saveInBackground();
+
 			}
 			break;
 		default:

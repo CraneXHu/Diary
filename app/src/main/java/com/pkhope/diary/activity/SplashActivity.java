@@ -5,10 +5,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.preference.PreferenceManager;
 import android.view.WindowManager;
 
+import com.pkhope.diary.MyApplication;
 import com.pkhope.diary.R;
+import com.pkhope.diary.model.Document;
+import com.pkhope.diary.model.User;
 
 public class SplashActivity extends Activity {
 
@@ -39,11 +42,19 @@ public class SplashActivity extends Activity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            SharedPreferences preference = getSharedPreferences("data",MODE_PRIVATE);
-            if (preference.getBoolean("net",false)){
+            SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            if (preference.getBoolean("network",false) && !User.isLogin()){
                 Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
                 startActivity(intent);
             } else {
+
+                Document doc = ((MyApplication)getApplication()).getDoc();
+                try{
+                    doc.readFile();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+
                 Intent intent = new Intent(SplashActivity.this,MainActivity.class);
                 startActivity(intent);
             }

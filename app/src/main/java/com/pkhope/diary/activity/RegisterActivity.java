@@ -11,17 +11,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.avos.avoscloud.AVException;
-import com.avos.avoscloud.AVObject;
-import com.avos.avoscloud.AVQuery;
-import com.avos.avoscloud.FindCallback;
-import com.pkhope.diary.MyApplication;
 import com.pkhope.diary.R;
+import com.pkhope.diary.callable.OnSignUpCallback;
 import com.pkhope.diary.model.User;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.List;
 
 /**
  * Created by thinkpad on 2015/8/11.
@@ -57,27 +50,42 @@ public class RegisterActivity extends AppCompatActivity {
                 }
 
 
-                AVQuery<User> query = AVObject.getQuery(User.class);
-                query.whereEqualTo("userName",mUser);
-                query.findInBackground(new FindCallback<User>() {
-                    @Override
-                    public void done(List<User> list, AVException e) {
-                        if(list.size() == 0){
-                            User user = new User();
-                            user.setUserId(mUser);
-                            user.setPassword(mPwd);
-                            user.saveInBackground();
+//                AVQuery<User> query = AVObject.getQuery(User.class);
+//                query.whereEqualTo("userName",mUser);
+//                query.findInBackground(new FindCallback<User>() {
+//                    @Override
+//                    public void done(List<User> list, AVException e) {
+//                        if(list.size() == 0){
+//                            User user = new User();
+//                            user.setUserId(mUser);
+//                            user.setPassword(mPwd);
+//                            user.saveInBackground();
+//
+//                            Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+//                            startActivity(intent);
+//                            finish();
+//
+//                        } else {
+//                            Toast.makeText(getApplicationContext(),"用户名已存在",Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
 
+                User user = new User();
+                user.setUsername(mUser);
+                user.setPassword(mPwd);
+                user.signUpInBackground(new OnSignUpCallback() {
+                    @Override
+                    public void done(AVException e) {
+                        if(e == null){
                             Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
                             startActivity(intent);
                             finish();
-
-                        } else {
-                            Toast.makeText(getApplicationContext(),"用户名已存在",Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
-
             }
         });
 
