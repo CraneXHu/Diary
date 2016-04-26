@@ -1,5 +1,7 @@
 package com.pkhope.diary.model;
 
+import com.avos.avoscloud.AVUser;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +18,8 @@ public class DiaryManager {
 	}
 	public Diary createDiary(String date,String week, String content) {
 		Diary diary = new Diary(date,week,content);
-//		myDiaryList.add(diary);
+		addDairy(diary);
+		saveOnServer(diary);
 		return diary;
 	}
 	
@@ -46,6 +49,19 @@ public class DiaryManager {
 			}
 		}
 		return null;
+	}
+
+	protected void saveOnServer(Diary diary){
+		if (User.isLogin()){
+
+			DiaryLc dl = new DiaryLc();
+			dl.setUserName(AVUser.getCurrentUser().getUsername());
+			dl.setDate(diary.getDate());
+			dl.setWeek(diary.getWeek());
+			dl.setContent(diary.getContent());
+			dl.saveInBackground();
+
+		}
 	}
 
 }

@@ -25,11 +25,9 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText mEtUser;
     private EditText mEtPwd;
     private EditText mEtConfirm;
-    private EditText mEtVerification;
     private String mUser;
     private String mPwd;
     private String mConfirm;
-    private String mVerification;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +77,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void done(AVException e) {
                         if(e == null){
                             Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+                            intent.putExtra("from","RegisterActivity");
                             startActivity(intent);
                             finish();
                         }else{
@@ -92,17 +91,19 @@ public class RegisterActivity extends AppCompatActivity {
         mEtUser = (EditText) findViewById(R.id.et_user);
         mEtPwd = (EditText) findViewById(R.id.et_pwd);
         mEtConfirm = (EditText) findViewById(R.id.et_confirm);
-        mEtVerification = (EditText) findViewById(R.id.et_verification);
     }
 
     private boolean checkInput(){
         mUser = mEtUser.getText().toString();
         mPwd = mEtPwd.getText().toString();
         mConfirm = mEtConfirm.getText().toString();
-        mVerification = mEtVerification.getText().toString();
 
-        if (mUser.equals("") || mPwd.equals("") || mConfirm.equals("")
-                || mVerification.equals("")){
+        if (mUser.equals("") || mPwd.equals("") || mConfirm.equals("")){
+            Toast.makeText(getApplicationContext(),"输入不合法",Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        if (!mPwd.equals(mConfirm)){
+            Toast.makeText(getApplicationContext(),"输入密码不匹配",Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

@@ -47,7 +47,6 @@ public class Document {
 			public void done(List<DiaryLc> list, AVException e) {
 				for (DiaryLc dl : list){
                     Diary diary =  mDiaryManager.createDiary(dl.getDate(),dl.getWeek(),dl.getContent());
-					mDiaryManager.addDairy(diary);
 				}
 			}
 		});

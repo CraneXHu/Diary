@@ -7,7 +7,7 @@
         <Preference
             android:key="account"
             android:title="帐号管理"
-            android:summary="帐号设置及密码修改"
+            android:summary="密码修改"
             android:layout="@layout/preference_item"/>
 
         <Preference
@@ -17,6 +17,7 @@
 
         <Preference
             android:title="清除缓存"
+            android:key="clear"
             android:layout="@layout/preference_item"/>
 
         <CheckBoxPreference

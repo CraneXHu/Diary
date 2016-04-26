@@ -12,7 +12,7 @@ import com.pkhope.diary.callable.OnSignUpCallback;
 /**
  * Created by pkhope on 2016/4/20.
  */
-@AVClassName("_User")
+@AVClassName("User")
 public class User extends AVUser {
 
     public static final Creator CREATOR = AVObjectCreator.instance;

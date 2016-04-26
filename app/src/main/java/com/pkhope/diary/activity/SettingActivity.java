@@ -12,8 +12,8 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.pkhope.diary.MyApplication;
 import com.pkhope.diary.R;
-import com.pkhope.diary.activity.LoginActivity;
 
 /**
  * Created by thinkpad on 2015/8/10.
@@ -65,8 +65,18 @@ public class SettingActivity extends AppCompatActivity {
             mAccount.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
-                    Intent intent = new Intent(getActivity(),LoginActivity.class);
+                    Intent intent = new Intent(getActivity(),ResetPasswordActivity.class);
                     getActivity().startActivity(intent);
+                    getActivity().finish();
+                    return true;
+                }
+            });
+
+            Preference clear = findPreference("clear");
+            clear.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+                @Override
+                public boolean onPreferenceClick(Preference preference) {
+                    MyApplication.getDoc().deleteFile();
                     return true;
                 }
             });

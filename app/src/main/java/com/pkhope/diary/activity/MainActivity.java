@@ -9,9 +9,11 @@ import java.io.IOException;
 import android.app.SearchManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.content.Intent;
+import android.preference.PreferenceManager;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -163,12 +165,12 @@ public class MainActivity extends AppCompatActivity {
 			}
 		});
 
-		int diaryCnt = MyApplication.getDoc().getDiaryManager().getDiaryCnt();
+		int diaryCnt = mDocument.getDiaryManager().getDiaryCnt();
 		if(diaryCnt == 0){
 			cardView.setVisibility(View.INVISIBLE);
 		}
 		else {
-			Diary diary = MyApplication.getDoc().getDiaryManager().getDiary(diaryCnt - 1);
+			Diary diary = mDocument.getDiaryManager().getDiary(diaryCnt - 1);
 			cardView.setVisibility(View.VISIBLE);
 			tvDate.setText(diary.getDate());
 			tvWeek.setText(diary.getWeek());
@@ -182,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
 			public void onDateSelected(int year, int month, int day) {
 				SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 				String date = formatter.format(new Date(year - 1900, month, day));
-				Diary diary = MyApplication.getDoc().getDiaryManager().getDiary(date);
+				Diary diary = mDocument.getDiaryManager().getDiary(date);
 				if (diary != null) {
 					cardView.setVisibility(View.VISIBLE);
 					tvDate.setText(diary.getDate());
@@ -235,16 +237,10 @@ public class MainActivity extends AppCompatActivity {
 				int iWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
 				String returnedData = data.getStringExtra("data_return");
 				Diary diary = mDocument.getDiaryManager().createDiary(date, week[iWeek-1], returnedData);
-				mDocument.getDiaryManager().addDairy(diary);
+//				mDocument.getDiaryManager().addDairy(diary);
 //				mDiaryAdapter.notifyDataSetChanged();
-				mRVAdapter.setList(MyApplication.getDoc().getDiaryManager().getList());
+				mRVAdapter.setList(mDocument.getDiaryManager().getList());
 				mRVAdapter.notifyDataSetChanged();
-
-				DiaryLc dl = new DiaryLc();
-				dl.setDate(diary.getDate());
-				dl.setWeek(diary.getWeek());
-				dl.setContent(diary.getContent());
-				dl.saveInBackground();
 
 			}
 			break;
@@ -274,7 +270,7 @@ public class MainActivity extends AppCompatActivity {
 
 			@Override
 			public boolean onQueryTextChange(String s) {
-				mRVAdapter.setList(MyApplication.getDoc().getDiaryManager().getList());
+				mRVAdapter.setList(mDocument.getDiaryManager().getList());
 				mRVAdapter.getFilter().filter(s);
 				return true;
 			}

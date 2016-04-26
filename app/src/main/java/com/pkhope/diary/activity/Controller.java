@@ -7,11 +7,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
+import com.avos.avoscloud.AVUser;
 import com.pkhope.diary.R;
 import com.pkhope.diary.activity.AboutActivity;
 import com.pkhope.diary.activity.FeedBackActivity;
 import com.pkhope.diary.activity.HelpActivity;
 import com.pkhope.diary.activity.SettingActivity;
+import com.pkhope.diary.model.User;
 
 import de.psdev.licensesdialog.LicensesDialog;
 import de.psdev.licensesdialog.licenses.ApacheSoftwareLicense20;
@@ -30,10 +32,12 @@ public class Controller {
     private LinearLayout mLlyFeedBack;
     private LinearLayout mLlyLicense;
     private LinearLayout mLlyAbout;
+    private LinearLayout mLlyLogout;
 
     Controller(Context context){
         mActivity = (Activity)context;
         init();
+        isLogin();
     }
 
     private void init(){
@@ -121,6 +125,30 @@ public class Controller {
                 return true;
             }
         });
+
+        mLlyLogout = (LinearLayout)mActivity.findViewById(R.id.lly_logout);
+        mLlyLogout.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    mLlyLogout.setBackgroundResource(R.drawable.nav_item_pressed);
+                } else if(event.getAction() == MotionEvent.ACTION_UP){
+                    mLlyLogout.setBackgroundResource(R.drawable.nav_item_normal);
+                    AVUser.logOut();
+                }
+                return true;
+            }
+        });
+
+    }
+
+    public void isLogin(){
+
+        if(User.isLogin()){
+            mLlyLogout.setVisibility(View.VISIBLE);
+        }else{
+            mLlyLogout.setVisibility(View.GONE);
+        }
     }
 
 }

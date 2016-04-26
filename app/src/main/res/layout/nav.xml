@@ -141,6 +141,20 @@
                     android:layout_gravity="center"/>
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/lly_logout"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:background="@color/white">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="48dp"
+                    android:gravity="center_vertical"
+                    android:text="@string/logout"/>
+            </LinearLayout>>
+
         </LinearLayout>
     </ScrollView>
 

@@ -6,17 +6,17 @@ import com.avos.avoscloud.AVObject;
 /**
  * Created by thinkpad on 2016/4/24.
  */
-@AVClassName("_Diary")
+@AVClassName("DiaryLc")
 public class DiaryLc extends AVObject{
 
     public static final Creator CREATOR = AVObjectCreator.instance;
 
-    public String getUserId(){
-        return getString("userId");
+    public String getUserName(){
+        return getString("userName");
     }
 
-    public void setUserId(String userId){
-        put("userId",userId);
+    public void setUserName(String userName){
+        put("userName",userName);
     }
 
     public String getDate(){

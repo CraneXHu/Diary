@@ -14,6 +14,7 @@
     <string name="exit">退出</string>
     <string name="account_setting">帐号管理</string>
     <string name="login">登录</string>
+    <string name="logout">注销</string>
     <string name="register">注册</string>
     <string name="user">手机号</string>
     <string name="password">密码</string>
