@@ -67,8 +67,33 @@ public class MainActivity extends AppCompatActivity {
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.setDisplayHomeAsUpEnabled(true);
 
-		AVAnalytics.trackAppOpened(getIntent());
+        loadData();
 
+		initDrawerLayout();
+		initViewPager();
+		initRecyclerView();
+		initCalenderView();
+
+		AVAnalytics.trackAppOpened(getIntent());
+	}
+
+	protected void loadData(){
+		mDocument = MyApplication.getDoc();
+		Intent intent = getIntent();
+		String str = intent.getStringExtra("from");
+		if (str.equals("LoginActivity")){
+			mDocument.deleteFile();
+			mDocument.load();
+		}else{
+			try{
+				mDocument.readFile();
+			}catch (Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+
+	protected void initDrawerLayout(){
 		mController = new Controller(this);
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -83,13 +108,6 @@ public class MainActivity extends AppCompatActivity {
 			}
 		};
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-		mDocument = MyApplication.getDoc();
-
-		initViewPager();
-//		initListView();
-		initRecyclerView();
-		initCalenderView();
 	}
 
 	protected void initRecyclerView(){

@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mEtPwd;
     private String mUser;
     private String mPwd;
-    public static final String URL = "http://10.0.3.2/";
+//    public static final String URL = "http://10.0.3.2/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,11 +76,8 @@ public class LoginActivity extends AppCompatActivity {
                     public void done(User user, AVException e) {
                         if(e == null){
 
-                            Document doc = ((MyApplication)getApplication()).getDoc();
-                            doc.deleteFile();
-                            doc.load();
-
                             Intent intent = new Intent(LoginActivity.this,MainActivity.class);
+                            intent.putExtra("from","LoginActivity");
                             startActivity(intent);
                             finish();
                         }else{

@@ -44,18 +44,14 @@ public class SplashActivity extends Activity {
         protected void onPostExecute(Void aVoid) {
             SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
             if (preference.getBoolean("network",false) && !User.isLogin()){
+
                 Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
                 startActivity(intent);
+
             } else {
 
-                Document doc = ((MyApplication)getApplication()).getDoc();
-                try{
-                    doc.readFile();
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
-
                 Intent intent = new Intent(SplashActivity.this,MainActivity.class);
+                intent.putExtra("from","SplashActivity");
                 startActivity(intent);
             }
             finish();
