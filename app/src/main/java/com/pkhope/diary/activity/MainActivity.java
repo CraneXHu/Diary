@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity {
 	public void onStop() {
 		super.onStop();
 		try {
-			mDocument.writeFile("diary.dat");
+			mDocument.writeFile();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

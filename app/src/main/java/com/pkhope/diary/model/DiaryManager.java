@@ -18,7 +18,7 @@ public class DiaryManager {
 	}
 	public Diary createDiary(String date,String week, String content) {
 		Diary diary = new Diary(date,week,content);
-		addDairy(diary);
+//		addDairy(diary);
 		saveOnServer(diary);
 		return diary;
 	}

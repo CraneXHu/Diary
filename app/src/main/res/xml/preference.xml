@@ -15,11 +15,6 @@
             android:summary="对日记内容进行加密"
             android:layout="@layout/preference_item"/>
 
-        <Preference
-            android:title="清除缓存"
-            android:key="clear"
-            android:layout="@layout/preference_item"/>
-
         <CheckBoxPreference
             android:title="联网设置"
             android:key="network"

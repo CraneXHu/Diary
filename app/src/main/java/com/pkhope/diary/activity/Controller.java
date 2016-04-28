@@ -135,6 +135,8 @@ public class Controller {
                 } else if(event.getAction() == MotionEvent.ACTION_UP){
                     mLlyLogout.setBackgroundResource(R.drawable.nav_item_normal);
                     AVUser.logOut();
+                    Intent intent = new Intent(mActivity,LoginActivity.class);
+                    mActivity.startActivity(intent);
                 }
                 return true;
             }

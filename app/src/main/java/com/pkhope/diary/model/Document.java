@@ -17,7 +17,7 @@ import com.avos.avoscloud.FindCallback;
 public class Document {
 
 	private static final String TAG = "Document";
-	private static final String FILE_NAME = "diary.dat";
+	public static final String FILE_NAME = "diary.dat";
 	
 	private Context mContext;
     private DiaryManager mDiaryManager;
@@ -64,7 +64,7 @@ public class Document {
 				mDiaryManager.addDairy(diary);
             }
             objIn.close();
-            System.out.println("1-->>"+str);
+
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -72,11 +72,11 @@ public class Document {
 	    
 	}
 	
-	public void writeFile(String fileName) throws IOException {
+	public void writeFile() throws IOException {
 		
 	    try{
 	    	
-			FileOutputStream fout = mContext.openFileOutput(fileName, 0);
+			FileOutputStream fout = mContext.openFileOutput(FILE_NAME,mContext.MODE_PRIVATE);
 			ObjectOutputStream objOut = new ObjectOutputStream(fout);
 			int cnt = mDiaryManager.getDiaryCnt();
             String str = Integer.toString(cnt);
@@ -86,8 +86,6 @@ public class Document {
     			objOut.writeObject(diary);
             }
 			objOut.close();
-            System.out.println("1-->>"+cnt);
-            System.out.println("2-->>"+str); 
 			
 	    }
 	    catch(Exception e) {

@@ -72,15 +72,6 @@ public class SettingActivity extends AppCompatActivity {
                 }
             });
 
-            Preference clear = findPreference("clear");
-            clear.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-                @Override
-                public boolean onPreferenceClick(Preference preference) {
-                    MyApplication.getDoc().deleteFile();
-                    return true;
-                }
-            });
-
         }
     }
 }
