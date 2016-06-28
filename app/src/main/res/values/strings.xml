@@ -30,7 +30,8 @@
     <string name="activity_edit_hint">Content</string>
     <string name="activity_feedback_menu_send">Send</string>
     <string name="nickname">Nickname</string>
+    <string name="about_author">Author:  pkhope</string>
     <string name="about_content">This is my first production in my spare time\n,There are still many deficiencies, will slowly improve later</string>
-    <string name="email">Contact me:hhxnbw@163.com</string>
-    <string name="blog">My blog:http://pkhope.github.io</string>
+    <string name="email">Email:  hhxnbw@163.com</string>
+    <string name="blog">My blog:  http://pkhope.github.io</string>
 </resources>

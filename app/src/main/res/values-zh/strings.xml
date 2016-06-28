@@ -26,7 +26,8 @@
     <string name="activity_edit_hint">内容</string>
     <string name="activity_feedback_menu_send">提交</string>
     <string name="nickname">昵称</string>
+    <string name="about_author">作者:  pkhope</string>
     <string name="about_content">这是我在业余时间学习android所写的一个作品，\n还有很多不足之处，以后会慢慢完善。</string>
-    <string name="email">联系: hhxnbw@163.com。\n</string>
-    <string name="blog">博客: http://pkhope.github.io</string>
+    <string name="email">Email:  hhxnbw@163.com。\n</string>
+    <string name="blog">博客:  http://pkhope.github.io</string>
 </resources>
