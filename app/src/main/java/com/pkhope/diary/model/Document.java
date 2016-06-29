@@ -13,6 +13,7 @@ import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.AVUser;
 import com.avos.avoscloud.FindCallback;
+import com.pkhope.diary.LoadDataListener;
 
 public class Document {
 
@@ -37,17 +38,20 @@ public class Document {
     	return mDiaryManager;
     }
 
-	public void load(){
+	public void load(final LoadDataListener listener){
 		AVUser user = AVUser.getCurrentUser();
 		AVQuery<DiaryLc> query = AVObject.getQuery(DiaryLc.class);
-		query.whereEqualTo("userId",user.getUsername());
+		query.whereEqualTo("userName",user.getUsername());
 		query.limit(100);
 		query.findInBackground(new FindCallback<DiaryLc>() {
 			@Override
 			public void done(List<DiaryLc> list, AVException e) {
 				for (DiaryLc dl : list){
-                    Diary diary =  mDiaryManager.createDiary(dl.getDate(),dl.getWeek(),dl.getContent());
+                    Diary diary =  mDiaryManager.createDiary(dl.getDate(),dl.getWeek(),dl.getContent(),false);
+					mDiaryManager.addDairy(diary);
 				}
+
+				listener.succeed();
 			}
 		});
 	}

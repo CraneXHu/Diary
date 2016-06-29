@@ -24,7 +24,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private  OnRecyclerViewItemClickListener mOnItemClickListener = null;
 
     public RecyclerViewAdapter(List<Diary> list) {
-        this.mItems = new ArrayList<Diary>(list);
+        mItems = new ArrayList<>();
+        mItems.addAll(list);
     }
 
     public void setList(List<Diary> list){
@@ -121,6 +122,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             notifyDataSetChanged();
         }
     }
+
     public static interface OnRecyclerViewItemClickListener {
         void onItemClick(View view,Diary diary);
     }

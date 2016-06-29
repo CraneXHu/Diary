@@ -12,14 +12,20 @@ public class DiaryManager {
 	public DiaryManager() {
 		mDiaryList = new ArrayList<Diary>();
 	}
-	
+	public void clear(){
+		mDiaryList.clear();
+	}
 	public List<Diary> getList() {
 		return mDiaryList;
 	}
-	public Diary createDiary(String date,String week, String content) {
+
+
+	public Diary createDiary(String date,String week, String content, boolean saveOnServer) {
 		Diary diary = new Diary(date,week,content);
 //		addDairy(diary);
-		saveOnServer(diary);
+		if (saveOnServer){
+			saveOnServer(diary);
+		}
 		return diary;
 	}
 	

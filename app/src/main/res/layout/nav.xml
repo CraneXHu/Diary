@@ -49,28 +49,28 @@
                     android:layout_gravity="center"/>
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/lly_help"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/white">
-                <ImageView
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/ic_help"/>
+            <!--<LinearLayout-->
+                <!--android:id="@+id/lly_help"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="48dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:background="@color/white">-->
+                <!--<ImageView-->
+                    <!--android:layout_width="24dp"-->
+                    <!--android:layout_height="24dp"-->
+                    <!--android:layout_marginLeft="8dp"-->
+                    <!--android:layout_gravity="center_vertical"-->
+                    <!--android:background="@drawable/ic_help"/>-->
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="@string/help"
-                    android:layout_marginLeft="16dp"
-                    android:paddingLeft="8dp"
-                    android:gravity="center_vertical"
-                    android:layout_gravity="center"/>
-            </LinearLayout>
+                <!--<TextView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:text="@string/help"-->
+                    <!--android:layout_marginLeft="16dp"-->
+                    <!--android:paddingLeft="8dp"-->
+                    <!--android:gravity="center_vertical"-->
+                    <!--android:layout_gravity="center"/>-->
+            <!--</LinearLayout>-->
 
             <LinearLayout
                 android:id="@+id/lly_feedback"

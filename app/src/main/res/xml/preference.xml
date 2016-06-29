@@ -15,12 +15,12 @@
             android:summary="对日记内容进行加密"
             android:layout="@layout/preference_item"/>
 
-        <CheckBoxPreference
-            android:title="联网设置"
-            android:key="network"
-            android:summaryOn="联网模式"
-            android:summaryOff="单机模式(默认)"
-            android:defaultValue="false"
-            android:layout="@layout/preference_item"/>
+        <!--<CheckBoxPreference-->
+            <!--android:title="联网设置"-->
+            <!--android:key="network"-->
+            <!--android:summaryOn="联网模式"-->
+            <!--android:summaryOff="单机模式(默认)"-->
+            <!--android:defaultValue="false"-->
+            <!--android:layout="@layout/preference_item"/>-->
     </PreferenceCategory>
 </PreferenceScreen>

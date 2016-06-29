@@ -10,6 +10,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginLeft="16dp"
         android:textSize="20sp"
+        android:textColor="@color/black"
         android:text="@string/register"/>
 
     <EditText
@@ -19,6 +20,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginRight="16dp"
+        android:textColor="@color/black"
         android:hint="@string/user"/>
 
     <EditText
@@ -28,6 +30,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:textColor="@color/black"
         android:hint="@string/password"/>
 
     <EditText
@@ -37,6 +40,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:textColor="@color/black"
         android:hint="@string/confirm_password"/>
 
     <com.andexert.library.RippleView

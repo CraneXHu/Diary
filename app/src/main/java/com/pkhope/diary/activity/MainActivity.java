@@ -29,10 +29,12 @@ import android.view.View;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.avos.avoscloud.AVAnalytics;
 import com.bonet.views.BtCalendarView;
 import com.bonet.views.OnDateSelectedListener;
+import com.pkhope.diary.LoadDataListener;
 import com.pkhope.diary.model.Diary;
 import com.pkhope.diary.adapter.DiaryAdapter;
 import com.pkhope.diary.model.DiaryLc;
@@ -43,7 +45,7 @@ import com.pkhope.diary.R;
 import com.pkhope.diary.adapter.RecyclerViewAdapter;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements LoadDataListener {
 	
 	private Document mDocument;
 	private DrawerLayout mDrawerLayout;
@@ -53,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 	private View mLlyList;
 	private View mLlyRecyclerView;
 	private View mLlyCalender;
-	private DiaryAdapter mDiaryAdapter;
+//	private DiaryAdapter mDiaryAdapter;
 	private RecyclerViewAdapter mRVAdapter;
 	private Controller mController;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -85,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
 		String str = intent.getStringExtra("from");
 		if (str.equals("LoginActivity")){
 			mDocument.deleteFile();
-			mDocument.load();
+			mDocument.load(this);
 		}else{
 			try{
 				mDocument.readFile();
@@ -218,14 +220,26 @@ public class MainActivity extends AppCompatActivity {
 	@Override
 	public void onStop() {
 		super.onStop();
+//		try {
+//			mDocument.writeFile();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
 		try {
 			mDocument.writeFile();
+			mDocument.getDiaryManager().clear();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -236,10 +250,10 @@ public class MainActivity extends AppCompatActivity {
 				String date = formatter.format(new Date());
 				int iWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
 				String returnedData = data.getStringExtra("data_return");
-				Diary diary = mDocument.getDiaryManager().createDiary(date, week[iWeek-1], returnedData);
-//				mDocument.getDiaryManager().addDairy(diary);
+				Diary diary = mDocument.getDiaryManager().createDiary(date, week[iWeek-1], returnedData, true);
+				mDocument.getDiaryManager().addDairy(diary);
 //				mDiaryAdapter.notifyDataSetChanged();
-				mRVAdapter.setList(mDocument.getDiaryManager().getList());
+//				mRVAdapter.setList(mDocument.getDiaryManager().getList());
 				mRVAdapter.notifyDataSetChanged();
 
 			}
@@ -310,5 +324,17 @@ public class MainActivity extends AppCompatActivity {
 	public void onConfigurationChanged(Configuration newConfig) {
 		super.onConfigurationChanged(newConfig);
 		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	@Override
+	public void succeed() {
+		mRVAdapter.setList(MyApplication.getDoc().getDiaryManager().getList());
+		mRVAdapter.notifyDataSetChanged();
+		Toast.makeText(getApplicationContext(),"Load succeed",Toast.LENGTH_SHORT).show();
+	}
+
+	@Override
+	public void failed() {
+
 	}
 }

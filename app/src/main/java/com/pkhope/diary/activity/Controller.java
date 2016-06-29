@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.avos.avoscloud.AVUser;
+import com.pkhope.diary.MyApplication;
 import com.pkhope.diary.R;
 import com.pkhope.diary.activity.AboutActivity;
 import com.pkhope.diary.activity.FeedBackActivity;
@@ -57,20 +58,20 @@ public class Controller {
             }
         });
 
-        mLlyHelp = (LinearLayout)mActivity.findViewById(R.id.lly_help);
-        mLlyHelp.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    mLlyHelp.setBackgroundResource(R.drawable.nav_item_pressed);
-                } else if(event.getAction() == MotionEvent.ACTION_UP){
-                    mLlyHelp.setBackgroundResource(R.drawable.nav_item_normal);
-                    Intent intent = new Intent(mActivity, HelpActivity.class);
-                    mActivity.startActivity(intent);
-                }
-                return true;
-            }
-        });
+//        mLlyHelp = (LinearLayout)mActivity.findViewById(R.id.lly_help);
+//        mLlyHelp.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+//                    mLlyHelp.setBackgroundResource(R.drawable.nav_item_pressed);
+//                } else if(event.getAction() == MotionEvent.ACTION_UP){
+//                    mLlyHelp.setBackgroundResource(R.drawable.nav_item_normal);
+//                    Intent intent = new Intent(mActivity, HelpActivity.class);
+//                    mActivity.startActivity(intent);
+//                }
+//                return true;
+//            }
+//        });
 
         mLlyFeedBack = (LinearLayout)mActivity.findViewById(R.id.lly_feedback);
         mLlyFeedBack.setOnTouchListener(new View.OnTouchListener() {
@@ -135,8 +136,10 @@ public class Controller {
                 } else if(event.getAction() == MotionEvent.ACTION_UP){
                     mLlyLogout.setBackgroundResource(R.drawable.nav_item_normal);
                     AVUser.logOut();
+                    MyApplication.getDoc().deleteFile();
                     Intent intent = new Intent(mActivity,LoginActivity.class);
                     mActivity.startActivity(intent);
+                    mActivity.finish();
                 }
                 return true;
             }

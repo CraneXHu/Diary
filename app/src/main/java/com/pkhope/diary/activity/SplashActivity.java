@@ -42,8 +42,8 @@ public class SplashActivity extends Activity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            if (preference.getBoolean("network",false) && !User.isLogin()){
+//            SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            if (!User.isLogin()){
 
                 Intent intent = new Intent(SplashActivity.this,LoginActivity.class);
                 startActivity(intent);
