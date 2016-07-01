@@ -253,7 +253,7 @@ public class MainActivity extends AppCompatActivity implements LoadDataListener 
 				Diary diary = mDocument.getDiaryManager().createDiary(date, week[iWeek-1], returnedData, true);
 				mDocument.getDiaryManager().addDairy(diary);
 //				mDiaryAdapter.notifyDataSetChanged();
-//				mRVAdapter.setList(mDocument.getDiaryManager().getList());
+				mRVAdapter.setList(mDocument.getDiaryManager().getList());
 				mRVAdapter.notifyDataSetChanged();
 
 			}
@@ -330,7 +330,7 @@ public class MainActivity extends AppCompatActivity implements LoadDataListener 
 	public void succeed() {
 		mRVAdapter.setList(MyApplication.getDoc().getDiaryManager().getList());
 		mRVAdapter.notifyDataSetChanged();
-		Toast.makeText(getApplicationContext(),"Load succeed",Toast.LENGTH_SHORT).show();
+//		Toast.makeText(getApplicationContext(),"Load succeed",Toast.LENGTH_SHORT).show();
 	}
 
 	@Override

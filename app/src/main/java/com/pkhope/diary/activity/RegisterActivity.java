@@ -72,11 +72,12 @@ public class RegisterActivity extends AppCompatActivity {
                 User user = new User();
                 user.setUsername(mUser);
                 user.setPassword(mPwd);
+                user.setEmail(mUser);
                 user.signUpInBackground(new OnSignUpCallback() {
                     @Override
                     public void done(AVException e) {
                         if(e == null){
-                            Intent intent = new Intent(RegisterActivity.this,MainActivity.class);
+                            Intent intent = new Intent(RegisterActivity.this,LoginActivity.class);
                             intent.putExtra("from","RegisterActivity");
                             startActivity(intent);
                             finish();

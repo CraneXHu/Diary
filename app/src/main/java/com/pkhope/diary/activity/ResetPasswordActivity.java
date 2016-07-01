@@ -44,9 +44,9 @@ public class ResetPasswordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 checkInput();
-
+                AVUser user = AVUser.getCurrentUser();
                 AVQuery<User> query = AVObject.getQuery(User.class);
-                query.whereEqualTo("userId",mUser.getText());
+                query.whereEqualTo("userName",user.getUsername());
                 query.findInBackground(new FindCallback<User>() {
                     @Override
                     public void done(List<User> list, AVException e) {
@@ -55,7 +55,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
                                 public void done(AVException e) {
                                     if (e == null) {
                                         // 已发送一份重置密码的指令到用户的邮箱
-                                        Intent intent = new Intent(ResetPasswordActivity.this,ResetPasswordActivity.class);
+                                        Intent intent = new Intent(ResetPasswordActivity.this,LoginActivity.class);
                                         startActivity(intent);
                                         finish();
                                     } else {
